@@ -1,4 +1,5 @@
 import Header from '../components/Header'
+import HeroSlider from '../components/HeroSlider'
 import HeroCasa from '../components/HeroCasa'
 import SobreCasa from '../components/SobreCasa'
 import LocalizacoesSection from '../components/LocalizacoesSection'
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Header />
       <main>
+        <HeroSlider />
         <HeroCasa />
         <SobreCasa />
         <LocalizacoesSection />
