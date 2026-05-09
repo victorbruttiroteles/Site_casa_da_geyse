@@ -1,5 +1,5 @@
 import Header from '../components/Header'
-import HeroSlider from '../components/HeroSlider'
+import MarqueeBanner from '../components/MarqueeBanner'
 import HeroCasa from '../components/HeroCasa'
 import SobreCasa from '../components/SobreCasa'
 import LocalizacoesSection from '../components/LocalizacoesSection'
@@ -8,13 +8,14 @@ import DiferenciaisSection from '../components/DiferenciaisSection'
 import ComoFunciona from '../components/ComoFunciona'
 import ClassificadosPreview from '../components/ClassificadosPreview'
 import Footer from '../components/Footer'
+import PromoPopup from '../components/PromoPopup'
 
 export default function Home() {
   return (
     <>
       <Header />
+      <MarqueeBanner />
       <main>
-        <HeroSlider />
         <HeroCasa />
         <SobreCasa />
         <LocalizacoesSection />
@@ -24,6 +25,7 @@ export default function Home() {
         <ClassificadosPreview />
       </main>
       <Footer />
+      <PromoPopup />
     </>
   )
 }
