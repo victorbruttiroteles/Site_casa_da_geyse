@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 
 const ITEMS = [
-  'Acompanhantes verificadas',
-  'Penha · Barra Velha',
-  'Discrição garantida',
+  'Acompanhantes disponíveis',
+  'Perfis verificados',
+  'Novos perfis cadastrados',
+  'Encontre sua acompanhante',
   'Perfis exclusivos',
-  'Ambiente seguro',
-  'Santa Catarina',
+  'Acesse os classificados',
 ]
 
 function MarqueeTrack() {
@@ -42,7 +42,7 @@ export default function MarqueeBanner() {
       <div className="flex items-center justify-center gap-4 py-3 px-4 border-t border-primary/10
                       bg-gradient-to-r from-transparent via-primary/[0.04] to-transparent">
         <span className="text-gray-400 text-xs sm:text-sm font-medium tracking-wide">
-          Conheça as acompanhantes disponíveis em Penha e Barra Velha
+          Veja os perfis das nossas acompanhantes
         </span>
         <Link
           to="/classificados"
