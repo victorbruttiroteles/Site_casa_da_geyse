@@ -42,7 +42,7 @@ export default function MarqueeBanner() {
       <div className="flex items-center justify-center gap-4 py-3 px-4 border-t border-primary/10
                       bg-gradient-to-r from-transparent via-primary/[0.04] to-transparent">
         <span className="text-gray-400 text-xs sm:text-sm font-medium tracking-wide">
-          Profissionais independentes anunciando na plataforma
+          Veja os perfis das acompanhantes disponíveis
         </span>
         <Link
           to="/classificados"

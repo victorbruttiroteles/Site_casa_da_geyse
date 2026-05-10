@@ -50,13 +50,13 @@ export default function PromoPopup() {
           {/* Title */}
           <h2 className="text-white font-black text-2xl leading-tight mb-3"
               style={{ letterSpacing: '-0.02em' }}>
-            Acompanhantes<br />
-            <span className="text-primary">anunciadas aqui</span>
+            Veja os perfis das<br />
+            <span className="text-primary">acompanhantes</span>
           </h2>
 
           {/* Desc */}
           <p className="text-gray-400 text-sm leading-relaxed mb-7 max-w-xs">
-            Profissionais independentes que divulgam seus serviços na nossa plataforma. Cada uma atua por conta própria.
+            Perfis disponíveis em Penha e Barra Velha. Acesse os classificados e encontre a acompanhante ideal.
           </p>
 
           {/* CTA */}
