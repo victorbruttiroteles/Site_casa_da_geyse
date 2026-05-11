@@ -65,11 +65,6 @@ export default function SobreCasa() {
                 em <strong className="text-white">Barra Velha</strong>, a casa tem toda a infraestrutura para
                 momentos confortáveis e sem preocupações.
               </p>
-              <p>
-                Os quartos são reservados por período e preparados com mobília de qualidade, ambiente climatizado
-                e tudo que você precisa para aproveitar o momento com tranquilidade. Você reserva, chega e
-                encontra o espaço pronto.
-              </p>
             </div>
 
             <div className="grid grid-cols-3 gap-4">

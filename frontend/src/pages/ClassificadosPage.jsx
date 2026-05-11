@@ -23,6 +23,7 @@ const REGIOES = [
     acompanhantes: [
       { nome: 'Camila', foto: '/penha-armacao/Camila.jpeg', whatsapp: '5514991587065' },
       { nome: 'Naiara', foto: '/penha-armacao/Naiara.jpeg', whatsapp: '5549998912590' },
+      { nome: 'Etiene', foto: '/penha-armacao/Etiene.jpeg', whatsapp: '5547913060290' },
     ],
   },
   {
@@ -31,6 +32,7 @@ const REGIOES = [
     acompanhantes: [
       { nome: 'Mari',  foto: '/barra-velha-centro/mari.jpg',   whatsapp: '5511983441355' },
       { nome: 'Bruna', foto: '/barra-velha-centro/Bruna.jpeg', whatsapp: '5547915490480' },
+      { nome: 'Mhel',  foto: '/barra-velha-centro/Mhel.jpeg',  whatsapp: '5541853709090' },
     ],
   },
 ]

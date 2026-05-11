@@ -56,12 +56,13 @@ export default function HeroCasa() {
 
             <p className="hero-sub opacity-0 text-gray-400 text-lg leading-relaxed mb-8 max-w-lg">
               A <span className="text-white font-semibold">Casa da Geyse</span> oferece quartos mobiliados
-              com toda a estrutura para quem busca segurança, privacidade e um ambiente tranquilo.
+              com toda a estrutura para quem busca segurança, privacidade e um ambiente tranquilo.{' '}
+              <span className="text-primary font-bold">Hospedagem feminina.</span>
             </p>
 
             <div className="grid grid-cols-2 gap-x-8 gap-y-2.5 mb-10">
               {['Quartos equipados', 'Wi-Fi incluso', 'Localização privilegiada',
-                'Segurança 24h', 'Ambiente discreto', 'Sem taxa de entrada'].map(item => (
+                'Segurança 24h', 'Ambiente discreto', 'Reserva mediante ao PIX'].map(item => (
                 <div key={item} className="hero-check opacity-0 flex items-center gap-2.5 text-sm text-gray-300">
                   <span className="text-primary font-black flex-shrink-0 text-base leading-none">✓</span>
                   {item}
