@@ -1,59 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { supabase } from '../supabase'
 
 const REGIOES = [
-  {
-    id: 'todas',
-    label: 'Todas',
-  },
-  {
-    id: 'penha-centro',
-    label: 'Penha Centro',
-    acompanhantes: [
-      { nome: 'Cibelle', foto: '/penha-centro/Cibelle.jpeg', whatsapp: '5541847181411' },
-      { nome: 'Mirela',  foto: '/penha-centro/Mirela.jpeg',  whatsapp: '55519304749300' },
-      { nome: 'Ana',     foto: '/penha-centro/ana.jpg',      whatsapp: '5548914723110' },
-      { nome: 'Veneza',  foto: '/penha-centro/veneza.jpg',   whatsapp: '5548999664880' },
-    ],
-  },
-  {
-    id: 'penha-armacao',
-    label: 'Penha Armação',
-    acompanhantes: [
-      { nome: 'Camila', foto: '/penha-armacao/Camila.jpeg', whatsapp: '5514991587065' },
-      { nome: 'Naiara', foto: '/penha-armacao/Naiara.jpeg', whatsapp: '5549998912590' },
-      { nome: 'Etiene', foto: '/penha-armacao/Etiene.jpeg', whatsapp: '5547913060290' },
-    ],
-  },
-  {
-    id: 'barra-velha-centro',
-    label: 'Barra Velha Centro',
-    acompanhantes: [
-      { nome: 'Mari',  foto: '/barra-velha-centro/mari.jpg',   whatsapp: '5511983441355' },
-      { nome: 'Bruna', foto: '/barra-velha-centro/Bruna.jpeg', whatsapp: '5547915490480' },
-      { nome: 'Mhel',  foto: '/barra-velha-centro/Mhel.jpeg',  whatsapp: '5541853709090' },
-    ],
-  },
+  { id: 'todas',              label: 'Todas'             },
+  { id: 'penha-centro',       label: 'Penha Centro'      },
+  { id: 'penha-armacao',      label: 'Penha Armação'     },
+  { id: 'barra-velha-centro', label: 'Barra Velha Centro'},
 ]
 
-const ALL = REGIOES.filter(r => r.id !== 'todas').flatMap(r =>
-  r.acompanhantes.map(a => ({ ...a, regiao: r.label }))
-)
-
-function Card({ nome, foto, whatsapp, regiao }) {
+function Card({ nome, foto_url, whatsapp, regiao }) {
   const msg = encodeURIComponent(`Olá ${nome}, vi seu perfil na Casa da Geyse e gostaria de saber mais!`)
   return (
     <div className="group flex flex-col bg-white/[0.03] border border-white/[0.08] rounded-2xl overflow-hidden
                     hover:border-primary/30 hover:shadow-[0_0_30px_rgba(233,30,140,0.12)] transition-all duration-300">
       <div className="relative overflow-hidden aspect-[3/4] bg-white/[0.02]">
-        <img src={foto} alt={nome} loading="lazy"
-             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+        {foto_url
+          ? <img src={foto_url} alt={nome} loading="lazy"
+                 className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+          : <div className="w-full h-full flex items-center justify-center text-gray-700 text-5xl">👤</div>
+        }
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         {regiao && (
           <span className="absolute top-2 left-2 text-[10px] font-bold uppercase tracking-wider
                            bg-black/50 text-white/80 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
-            {regiao}
+            {REGIOES.find(r => r.id === regiao)?.label ?? regiao}
           </span>
         )}
       </div>
@@ -76,12 +48,30 @@ function Card({ nome, foto, whatsapp, regiao }) {
 }
 
 export default function ClassificadosPage() {
-  const [ativa, setAtiva] = useState('todas')
+  const [ativa, setAtiva]       = useState('todas')
+  const [dados, setDados]       = useState([])
+  const [loading, setLoading]   = useState(true)
 
-  const regiaoAtiva = REGIOES.find(r => r.id === ativa)
+  useEffect(() => {
+    supabase
+      .from('acompanhantes')
+      .select('*')
+      .eq('ativa', true)
+      .order('criado_em', { ascending: true })
+      .then(({ data }) => {
+        setDados(data ?? [])
+        setLoading(false)
+      })
+  }, [])
+
   const lista = ativa === 'todas'
-    ? ALL
-    : regiaoAtiva.acompanhantes.map(a => ({ ...a, regiao: undefined }))
+    ? dados
+    : dados.filter(a => a.regiao === ativa)
+
+  const porRegiao = REGIOES.filter(r => r.id !== 'todas').map(r => ({
+    ...r,
+    acompanhantes: dados.filter(a => a.regiao === r.id),
+  })).filter(r => r.acompanhantes.length > 0)
 
   return (
     <>
@@ -94,12 +84,12 @@ export default function ClassificadosPage() {
             <p className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-2">Santa Catarina</p>
             <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">Classificados</h1>
             <p className="text-gray-400 text-sm mt-1">
-              {lista.length} perfil{lista.length !== 1 ? 's' : ''} disponíve{lista.length !== 1 ? 'is' : 'l'}
+              {loading ? 'Carregando...' : `${lista.length} perfil${lista.length !== 1 ? 's' : ''} disponíve${lista.length !== 1 ? 'is' : 'l'}`}
             </p>
           </div>
         </div>
 
-        {/* Filtros por região */}
+        {/* Filtros */}
         <div className="border-b border-white/[0.06] bg-[#080822] sticky top-0 z-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2 overflow-x-auto py-3 scrollbar-hide">
@@ -119,12 +109,18 @@ export default function ClassificadosPage() {
 
         {/* Grid */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          {ativa !== 'todas' ? (
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+            </div>
+          ) : lista.length === 0 ? (
+            <p className="text-gray-500 text-center py-20">Nenhum perfil disponível no momento.</p>
+          ) : ativa !== 'todas' ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              {lista.map((a, i) => <Card key={i} {...a} />)}
+              {lista.map(a => <Card key={a.id} {...a} />)}
             </div>
           ) : (
-            REGIOES.filter(r => r.id !== 'todas').map(r => (
+            porRegiao.map(r => (
               <div key={r.id} className="mb-12">
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-1 h-6 bg-primary rounded-full" />
@@ -132,7 +128,7 @@ export default function ClassificadosPage() {
                   <span className="text-gray-600 text-sm">{r.acompanhantes.length} perfis</span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                  {r.acompanhantes.map((a, i) => <Card key={i} {...a} />)}
+                  {r.acompanhantes.map(a => <Card key={a.id} {...a} />)}
                 </div>
               </div>
             ))
