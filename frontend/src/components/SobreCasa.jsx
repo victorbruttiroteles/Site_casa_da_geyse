@@ -20,12 +20,6 @@ export default function SobreCasa() {
         { opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
           scrollTrigger: { trigger: '.sobre-text', start: 'top 80%' } }
       )
-      gsap.fromTo('.sobre-img',
-        { opacity: 0, x: 40, scale: 0.97 },
-        { opacity: 1, x: 0, scale: 1, duration: 0.9, ease: 'power3.out',
-          scrollTrigger: { trigger: '.sobre-img', start: 'top 80%' } }
-      )
-
       document.querySelectorAll('.stat-num').forEach(el => {
         const target = +el.dataset.target
         ScrollTrigger.create({
@@ -46,7 +40,7 @@ export default function SobreCasa() {
   return (
     <section ref={sectionRef} className="py-24 bg-[#080822]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 gap-16 items-center max-w-2xl">
 
           <div className="sobre-text opacity-0">
             <p className="text-[11px] font-bold text-primary uppercase tracking-[0.22em] mb-4 flex items-center gap-3">
@@ -80,20 +74,6 @@ export default function SobreCasa() {
             </div>
           </div>
 
-          <div className="sobre-img opacity-0 relative">
-            <div className="absolute -inset-6 rounded-3xl opacity-15 blur-3xl pointer-events-none"
-                 style={{ background: 'radial-gradient(circle, #e91e8c, transparent 65%)' }} />
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/[0.07]">
-              <img src="/casa-penha-centro/pc-01.jpg" alt="Casa da Geyse"
-                   className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            </div>
-            <div className="absolute -bottom-4 -right-4 bg-primary text-white rounded-2xl p-4 shadow-lg text-center w-28
-                            shadow-[0_0_30px_rgba(233,30,140,0.4)]">
-              <div className="text-2xl font-black">SC</div>
-              <div className="text-[10px] font-bold uppercase tracking-wide mt-0.5">Santa Catarina</div>
-            </div>
-          </div>
 
         </div>
       </div>
