@@ -8,15 +8,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-10">
 
-          {/* Brand */}
-          <div>
-            <img src="/logo.png" alt="Casa da Geyse" className="h-14 w-auto object-contain mb-3" />
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Aluguel de quartos com discrição e conforto para acompanhantes em Santa Catarina.
-            </p>
-          </div>
-
-          {/* Links */}
+          {/* Navegação */}
           <div>
             <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-4">Navegação</h4>
             <ul className="space-y-2 text-sm">
@@ -24,8 +16,17 @@ export default function Footer() {
               <li><a href="/#casas" className="text-gray-400 hover:text-white transition-colors">Nossas Casas</a></li>
               <li><a href="/#como-funciona" className="text-gray-400 hover:text-white transition-colors">Como Funciona</a></li>
               <li><Link to="/classificados" className="text-gray-400 hover:text-white transition-colors">Classificados</Link></li>
-              <li><Link to="/regras" className="text-gray-400 hover:text-white transition-colors">Regras da Casa</Link></li>
             </ul>
+          </div>
+
+          {/* Regras — coluna central */}
+          <div className="flex flex-col items-center justify-center text-center">
+            <Link to="/regras"
+                  className="text-gray-400 hover:text-primary border border-white/[0.08] hover:border-primary/40
+                             transition-all duration-200 text-sm font-bold px-6 py-3 rounded-xl">
+              Regras da Casa
+            </Link>
+            <p className="text-gray-600 text-xs mt-2">Para hóspedes</p>
           </div>
 
           {/* Contato */}
