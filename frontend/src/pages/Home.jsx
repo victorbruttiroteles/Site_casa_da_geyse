@@ -2,7 +2,6 @@ import Header from '../components/Header'
 import MarqueeBanner from '../components/MarqueeBanner'
 import HeroCasa from '../components/HeroCasa'
 import SobreCasa from '../components/SobreCasa'
-import LocalizacoesSection from '../components/LocalizacoesSection'
 import CasasSection from '../components/CasasSection'
 import DiferenciaisSection from '../components/DiferenciaisSection'
 import ComoFunciona from '../components/ComoFunciona'
@@ -18,7 +17,6 @@ export default function Home() {
       <main>
         <HeroCasa />
         <SobreCasa />
-        <LocalizacoesSection />
         <CasasSection />
         <DiferenciaisSection />
         <ComoFunciona />
