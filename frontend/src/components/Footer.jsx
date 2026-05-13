@@ -24,6 +24,7 @@ export default function Footer() {
               <li><a href="/#casas" className="text-gray-400 hover:text-white transition-colors">Nossas Casas</a></li>
               <li><a href="/#como-funciona" className="text-gray-400 hover:text-white transition-colors">Como Funciona</a></li>
               <li><Link to="/classificados" className="text-gray-400 hover:text-white transition-colors">Classificados</Link></li>
+              <li><Link to="/regras" className="text-gray-400 hover:text-white transition-colors">Regras da Casa</Link></li>
             </ul>
           </div>
 
