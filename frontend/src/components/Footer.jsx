@@ -20,13 +20,11 @@ export default function Footer() {
           </div>
 
           {/* Regras — coluna central */}
-          <div className="flex flex-col items-center justify-center text-center">
-            <Link to="/regras"
-                  className="text-gray-400 hover:text-primary border border-white/[0.08] hover:border-primary/40
-                             transition-all duration-200 text-sm font-bold px-6 py-3 rounded-xl">
-              Regras da Casa
-            </Link>
-            <p className="text-gray-600 text-xs mt-2">Para hóspedes</p>
+          <div>
+            <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-4">Informações</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link to="/regras" className="text-gray-400 hover:text-white transition-colors">Regras da Casa</Link></li>
+            </ul>
           </div>
 
           {/* Contato */}
