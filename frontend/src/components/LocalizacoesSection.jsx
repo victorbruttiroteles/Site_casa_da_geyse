@@ -8,14 +8,14 @@ const CIDADES = [
   {
     nome: 'Penha',
     linhas: ['Penha'],
-    foto: '/2-1-scaled.jpeg',
+    foto: '/casa-penha-centro/pc-01.jpg',
     descricao: 'No coração do litoral norte, com bairros Armação e Centro a poucos metros do mar.',
     detalhes: ['100m da praia', '2 unidades', 'Armação e Centro'],
   },
   {
     nome: 'Barra Velha',
     linhas: ['Barra', 'Velha'],
-    foto: '/o-que-fazer-em-barra-velha-sc-clube-candeias-festival-lagoa.jpeg',
+    foto: '/casa-barra-velha/bv-01.jpg',
     descricao: 'Na Praia do Tabuleiro, entre o mar e a marginal da BR — ponto de passagem estratégico.',
     detalhes: ['50m da praia', '1 unidade', 'Praia do Tabuleiro'],
   },
